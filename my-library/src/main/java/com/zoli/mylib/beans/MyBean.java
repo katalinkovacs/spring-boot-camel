@@ -9,4 +9,9 @@ public class MyBean {
 
         return " this is crap from library";
     }
+
+    public String giveMeSomething(){
+
+        return " This is something from library.";
+    }
 }

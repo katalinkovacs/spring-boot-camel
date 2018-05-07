@@ -15,6 +15,7 @@ public class MyBeanie {
     public String saySomething() {
 
         MyBean myBean = new MyBean();
-        return say + myBean.giveMeSomeCrap();
+        /*return say + myBean.giveMeSomeCrap();*/
+        return say + myBean.giveMeSomething();
     }
 }
