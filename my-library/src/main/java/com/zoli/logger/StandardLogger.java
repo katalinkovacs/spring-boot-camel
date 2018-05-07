@@ -3,7 +3,7 @@ package com.zoli.logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.camel.Exchange;
-
+import org.springframework.stereotype.Component;
 
 
 import static com.zoli.route.constants.Constants.STEP_FINISH;
@@ -11,6 +11,7 @@ import static com.zoli.route.constants.Constants.STEP_START;
 import static com.zoli.route.constants.Constants.STEP_START_PROCESS;
 import static jdk.nashorn.internal.objects.NativeMath.log;
 
+@Component
 public class StandardLogger {
 
 
@@ -22,9 +23,6 @@ public class StandardLogger {
 
     public StandardLogger() {
     }
-
-
-
 
 
     public void logStart(Exchange exchange) throws Exception {
@@ -42,17 +40,17 @@ public class StandardLogger {
 
 
 
-    /*private void log(Exchange exchange, String stepName) throws Exception {
-        updateStandardHeader(exchange, this.defaultIntegrationId, this.defaultInterfaceId, stepName, defaultSourceSystem, overrideSourceSystem);
-        createLogMessage(exchange);
+    private void log(Exchange exchange, String stepName) throws Exception {
+       // updateStandardHeader(exchange, this.defaultIntegrationId, this.defaultInterfaceId, stepName, defaultSourceSystem, overrideSourceSystem);
+        //createLogMessage(exchange);
+
+
+        //for just to see how it works roughly
+        LOG.info(stepName + " The body of the message: " +  exchange.getIn().getBody().toString());
     }
 
-    private void log(Exchange exchange, String stepName, String stepSystem) throws InternalLogicException {
-        if (stepName.equals(STEP_RECEIVE) && stepSystem != null && !stepSystem.isEmpty()) {
-            this.overrideSourceSystem = stepSystem;
-        }
 
-    }*/
+
 
 
 

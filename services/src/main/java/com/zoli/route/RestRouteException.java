@@ -1,9 +1,11 @@
 package com.zoli.route;
 
+import com.zoli.logger.StandardLogger;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import static com.zoli.route.constants.Constants.SIMPLE_BODY;
@@ -17,6 +19,9 @@ public class RestRouteException extends RouteBuilder {
     final static Logger logger = LoggerFactory.getLogger(RestRouteException.class);
 
 
+
+    @Autowired
+    StandardLogger stdLogger;
 
     @Override
     public void configure() throws Exception {
@@ -44,23 +49,31 @@ public class RestRouteException extends RouteBuilder {
         ;*/
 
 
-        logger.info("Hey Katalin! - This an Info from HelloWorld!");
-        logger.debug("Hey Katalin! - This a Debug from HelloWorld!");
+       // logger.info("Hey Katalin! - This an Info from HelloWorld!");
+        // logger.debug("Hey Katalin! - This a Debug from HelloWorld!");
 
         from("jetty://http://0.0.0.0:8082/say")
-                .log(STEP_START)
+
+                .bean(stdLogger, "logStart")
+                
                 .transform(method("myBean", "saySomething"))
+
                 /*.log("This is just a simple log .......with a body ${body}")*/
-                .log(SIMPLE_BODY)
-                .log(LoggingLevel.DEBUG, "This is DEBUG log .......")
-                .log(LoggingLevel.INFO,"This is INFO log .......")
-                .log(LoggingLevel.ERROR,"This is ERROR log .......")
-                .log(STEP_FINISH);
+                //.log(SIMPLE_BODY)
+                //.log(LoggingLevel.DEBUG, "This is DEBUG log .......")
+                //.log(LoggingLevel.INFO,"This is INFO log .......")
+                //.log(LoggingLevel.ERROR,"This is ERROR log .......")
+                //.log(STEP_FINISH);
+
+                // here your doing message processing whatever
+                // and when route finish then invoke logger finish
+
+
+                .bean(stdLogger, "logFinished");
 
 
 
-
-        logger.info("Exiting application.");
+                //logger.info("Exiting application.");
 
     }
 
