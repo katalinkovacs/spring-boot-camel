@@ -1,5 +1,6 @@
 package com.zoli.route;
 
+import com.zoli.logger.StandardLogger;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.slf4j.Logger;
@@ -15,7 +16,7 @@ import static com.zoli.route.constants.Constants.STEP_START;
 public class RestRouteException extends RouteBuilder {
 
     final static Logger logger = LoggerFactory.getLogger(RestRouteException.class);
-
+    public StandardLogger stdLog = new StandardLogger();
 
 
     @Override
@@ -49,13 +50,15 @@ public class RestRouteException extends RouteBuilder {
 
         from("jetty://http://0.0.0.0:8082/say")
                 .log(STEP_START)
+                .bean(stdLog, "logStart")
                 .transform(method("myBean", "saySomething"))
                 /*.log("This is just a simple log .......with a body ${body}")*/
                 .log(SIMPLE_BODY)
                 .log(LoggingLevel.DEBUG, "This is DEBUG log .......")
                 .log(LoggingLevel.INFO,"This is INFO log .......")
                 .log(LoggingLevel.ERROR,"This is ERROR log .......")
-                .log(STEP_FINISH);
+                .log(STEP_FINISH)
+                .bean(stdLog, "logFinished");
 
 
 
