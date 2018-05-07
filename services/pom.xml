@@ -27,59 +27,7 @@
         </plugins>
     </build>
 
-    <!-- <parent>
-         <groupId>org.springframework.boot</groupId>
-         <artifactId>spring-boot-starter-parent</artifactId>
-         <version>1.5.8.RELEASE</version>
-         <relativePath /> &lt;!&ndash; lookup parent from repository &ndash;&gt;
-     </parent>-->
-    <!--<parent>
-        <artifactId>spring-boot-camel-parent</artifactId>
-        <groupId>zoli</groupId>
-       <version>1.0-SNAPSHOT</version>
-    </parent>-->
 
-
-  <!--  <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        &lt;!&ndash; configure the versions you want to use here &ndash;&gt;
-        <fabric8.version>2.2.170.redhat-000019</fabric8.version>
-
-        <arquillian-cube.version>1.9.0</arquillian-cube.version>
-        <assertj.version>2.4.1</assertj.version>
-
-        &lt;!&ndash; maven plugin versions &ndash;&gt;
-        <fabric8.maven.plugin.version>3.5.31</fabric8.maven.plugin.version>
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-    </properties>-->
-
-   <!-- <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>io.fabric8</groupId>
-                <artifactId>fabric8-project-bom-camel-spring-boot</artifactId>
-                <version>${fabric8.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            &lt;!&ndash; The following dependencies can be removed whe using fabric8 BOM 2.3.7+ &ndash;&gt;
-            <dependency>
-                <groupId>org.arquillian.cube</groupId>
-                <artifactId>arquillian-cube-bom</artifactId>
-                <version>${arquillian-cube.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>org.assertj</groupId>
-                <artifactId>assertj-core</artifactId>
-                <version>${assertj.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>-->
 
     <dependencies>
 
@@ -101,14 +49,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
-       <!-- <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-sql-starter</artifactId>
-        </dependency>-->
 
         <dependency>
             <groupId>org.apache.camel</groupId>
@@ -134,24 +74,18 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-quartz2</artifactId>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.camel/camel-core -->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-core</artifactId>
         </dependency>
+
         <dependency>
             <groupId>zoli</groupId>
             <artifactId>my-library</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
-       <!-- <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>mssql-jdbc</artifactId>
-            <version>6.4.0.jre8</version>
-        </dependency>-->
-
 
         <!-- testing -->
         <dependency>
@@ -159,21 +93,7 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--<dependency>
-            <groupId>org.jboss.arquillian.junit</groupId>
-            <groupId>org.arquillian.cube</groupId>
-            <artifactId>arquillian-cube-openshift</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.fabric8</groupId>
-            <artifactId>arquillian-junit-container</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <artifactId>kubernetes-assertions</artifactId>
-            <scope>test</scope>
-        </dependency>-->
+
 
         <dependency>
             <groupId>org.apache.camel</groupId>

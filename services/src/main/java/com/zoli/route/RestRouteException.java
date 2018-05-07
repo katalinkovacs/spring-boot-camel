@@ -1,5 +1,6 @@
 package com.zoli.route;
 
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,11 +12,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class RestRouteException extends RouteBuilder {
 
-    static Logger logger = (Logger) LoggerFactory.getLogger(RestRouteException.class);
+    final static Logger logger = LoggerFactory.getLogger(RestRouteException.class);
+
 
 
     @Override
     public void configure() throws Exception {
+
+        logger.info("Entering application.");
+
+
 
         getContext().setStreamCaching(true);
 
@@ -41,10 +47,16 @@ public class RestRouteException extends RouteBuilder {
 
         from("jetty://http://0.0.0.0:8082/say")
                 .transform(method("myBean", "saySomething"))
-                .log("This is just a simplle log .......with a body ${body}");
+                .log("This is just a simple log .......with a body ${body}")
+                .log(LoggingLevel.DEBUG, "This is DEBUG log .......")
+                .log(LoggingLevel.INFO,"This is INFO log .......")
+                .log(LoggingLevel.ERROR,"This is ERROR log .......");
 
 
 
+        logger.info("Exiting application.");
 
     }
+
+
 }
