@@ -17,7 +17,7 @@ import static com.zoli.route.constants.Constants.STEP_START;
 public class RestRouteException extends RouteBuilder {
 
     final static Logger logger = LoggerFactory.getLogger(RestRouteException.class);
-
+    public StandardLogger stdLog = new StandardLogger();
 
 
     @Autowired
@@ -64,6 +64,7 @@ public class RestRouteException extends RouteBuilder {
                 //.log(LoggingLevel.INFO,"This is INFO log .......")
                 //.log(LoggingLevel.ERROR,"This is ERROR log .......")
                 //.log(STEP_FINISH);
+                .bean(stdLog, "logFinished");
 
                 // here your doing message processing whatever
                 // and when route finish then invoke logger finish
