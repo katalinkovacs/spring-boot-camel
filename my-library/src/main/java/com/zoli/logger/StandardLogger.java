@@ -42,17 +42,14 @@ public class StandardLogger {
 
 
 
-    /*private void log(Exchange exchange, String stepName) throws Exception {
-        updateStandardHeader(exchange, this.defaultIntegrationId, this.defaultInterfaceId, stepName, defaultSourceSystem, overrideSourceSystem);
-        createLogMessage(exchange);
+    private void log(Exchange exchange, String stepName) throws Exception {
+        // updateStandardHeader(exchange, this.defaultIntegrationId, this.defaultInterfaceId, stepName, defaultSourceSystem, overrideSourceSystem);
+        //createLogMessage(exchange);
+
+
+        //for just to see how it works roughly
+        LOG.info(stepName + " The body of the message: " +  exchange.getIn().getBody().toString());
     }
-
-    private void log(Exchange exchange, String stepName, String stepSystem) throws InternalLogicException {
-        if (stepName.equals(STEP_RECEIVE) && stepSystem != null && !stepSystem.isEmpty()) {
-            this.overrideSourceSystem = stepSystem;
-        }
-
-    }*/
 
 
 
