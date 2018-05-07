@@ -1,19 +1,18 @@
 package com.zoli.route;
 
-import org.apache.camel.Exchange;
-import org.apache.camel.LoggingLevel;
-import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import static sun.util.logging.LoggingSupport.log;
+
+
 
 @Component
 public class RestRouteException extends RouteBuilder {
 
-    protected static final Logger LOG = LoggerFactory.getLogger(RestRouteException.class);
+    static Logger logger = (Logger) LoggerFactory.getLogger(RestRouteException.class);
+
 
     @Override
     public void configure() throws Exception {
@@ -36,12 +35,16 @@ public class RestRouteException extends RouteBuilder {
                 })
         ;*/
 
+
+        logger.info("Hey Katalin! - This an Info from HelloWorld!");
+        logger.debug("Hey Katalin! - This a Debug from HelloWorld!");
+
         from("jetty://http://0.0.0.0:8082/say")
                 .transform(method("myBean", "saySomething"))
+                .log("This is just a simplle log .......with a body ${body}");
 
-                .log("log ${body}")
-                .log(LoggingLevel.INFO, LOG, "Info LOG ----------- ${body}")
-                .log(LoggingLevel.ERROR, LOG, "Error LOG ------------ ${body}")
-                .log(LoggingLevel.DEBUG, LOG, "Debug LOG  -----------------${body}");
+
+
+
     }
 }
