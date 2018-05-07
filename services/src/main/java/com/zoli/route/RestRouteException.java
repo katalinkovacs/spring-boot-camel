@@ -70,7 +70,7 @@ public class RestRouteException extends RouteBuilder {
                 // and when route finish then invoke logger finish
 
 
-                .bean(stdLogger, "logFinished");
+               
 
 
 
