@@ -6,7 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-
+import static com.zoli.route.constants.Constants.STEP_FINISH;
+import static com.zoli.route.constants.Constants.STEP_START;
 
 
 @Component
@@ -50,7 +51,10 @@ public class RestRouteException extends RouteBuilder {
                 .log("This is just a simple log .......with a body ${body}")
                 .log(LoggingLevel.DEBUG, "This is DEBUG log .......")
                 .log(LoggingLevel.INFO,"This is INFO log .......")
-                .log(LoggingLevel.ERROR,"This is ERROR log .......");
+                .log(LoggingLevel.ERROR,"This is ERROR log .......")
+                .log(STEP_START)
+                .log(STEP_FINISH);
+
 
 
 
