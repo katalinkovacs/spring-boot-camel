@@ -5,19 +5,13 @@ import org.slf4j.LoggerFactory;
 import org.apache.camel.Exchange;
 
 
-
-import static com.zoli.route.constants.Constants.STEP_FINISH;
-import static com.zoli.route.constants.Constants.STEP_START;
-import static com.zoli.route.constants.Constants.STEP_START_PROCESS;
+import static com.zoli.route.constants.Constants.*;
 import static jdk.nashorn.internal.objects.NativeMath.log;
 
 public class StandardLogger {
 
 
     private static final Logger LOG = LoggerFactory.getLogger(StandardLogger.class);
-
-    private String defaultIntegrationId = "Use stdLog.setDefaultIntegrationId(\"int001\") in main camel routebuilder.configure!";
-    private String defaultInterfaceId = "Use stdLog.setDefaultInterfaceId(\"inf0002\") in main camel routebuilder.configure!";
 
 
     public StandardLogger() {
@@ -38,6 +32,9 @@ public class StandardLogger {
         log(exchange, STEP_FINISH);
     }
 
+    public void logKati(Exchange exchange) throws Exception {
+        log(exchange, STEP_KATI);
+    }
 
 
 
@@ -48,14 +45,10 @@ public class StandardLogger {
 
 
         //for just to see how it works roughly
-        LOG.info(stepName + " The body of the message: " +  exchange.getIn().getBody().toString());
+        LOG.info("StepName is: " +stepName + " The body of the message: " +  exchange.getIn().getBody().toString());
+        /*LOG.debug("DEBUG----------------");
+        LOG.warn("WARN---------------");*/
     }
-
-
-
-
-
-
 
 
 }
