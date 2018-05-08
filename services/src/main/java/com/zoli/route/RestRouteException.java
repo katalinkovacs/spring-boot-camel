@@ -22,7 +22,7 @@ public class RestRouteException extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        logger.info("Entering application.");
+        logger.info("-----------------Entering application----------------.");
 
 
 
@@ -45,8 +45,8 @@ public class RestRouteException extends RouteBuilder {
         ;*/
 
 
-        logger.info("Hey Katalin! - This an Info from HelloWorld!");
-        logger.debug("Hey Katalin! - This a Debug from HelloWorld!");
+        logger.info("-------------- This an INFO from RestRouteException-----------------");
+        logger.debug("-------------- This an DEBUG from RestRouteException-----------------");
 
         from("jetty://http://0.0.0.0:8082/say")
                 .log(STEP_START)
@@ -59,13 +59,12 @@ public class RestRouteException extends RouteBuilder {
                 .log(LoggingLevel.ERROR,"This is ERROR log .......")
                 .log(STEP_FINISH)
                 .bean(stdLog, "logFinished")
-                .log("log")
-                .bean(stdLog, "logKati");
+                .log("log");
 
 
 
 
-        logger.info("Exiting application.");
+        logger.info("-------------------Exiting application.------------------");
 
     }
 

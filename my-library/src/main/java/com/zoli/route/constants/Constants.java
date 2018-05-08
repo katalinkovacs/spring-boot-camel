@@ -9,7 +9,6 @@ public class Constants {
     public static final String STEP_FINISH = "Step_Finish";
     /*public static final String STEP_START_PROCESS = "Processing"; // Process <EntityName>*/
     public static final String STEP_START = "Step_Start";
-    public static final String STEP_KATI = "Step_Kati";
 
 
 

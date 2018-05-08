@@ -32,9 +32,7 @@ public class StandardLogger {
         log(exchange, STEP_FINISH);
     }
 
-    public void logKati(Exchange exchange) throws Exception {
-        log(exchange, STEP_KATI);
-    }
+
 
 
 
