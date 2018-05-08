@@ -67,6 +67,7 @@ public class StandardLogger {
         String standardheaderJson = standardHeader.toString();
 
         LOG.info("StepName is: " +stepName + " The body of the message: " +  exchange.getIn().getBody().toString() + " The standard header is: " + standardheaderJson);
+        LOG.info("----------another info----------");
 
     }
 
