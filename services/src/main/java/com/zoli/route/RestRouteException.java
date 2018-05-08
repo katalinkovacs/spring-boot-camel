@@ -44,6 +44,9 @@ public class RestRouteException extends RouteBuilder {
                 })
         ;*/
 
+        stdLog.setDefaultInterface_id("Katalin_Interface_id");
+        stdLog.setDefaultInterface_step("Katalin_Interface_step_ProcessingMessage");
+
 
         logger.info("-------------- This an INFO from RestRouteException-----------------");
         logger.debug("-------------- This an DEBUG from RestRouteException-----------------");

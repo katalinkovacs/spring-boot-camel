@@ -5,24 +5,24 @@ import com.google.gson.Gson;
 
 public class StandardHeader {
 
-    public String esb_interface_id;
-    public String esb_interface_step;
+    public String interface_id;
+    public String interface_step;
 
 
-    public String getEsb_interface_id() {
-        return esb_interface_id;
+    public String getInterface_id() {
+        return interface_id;
     }
 
-    public void setEsb_interface_id(String esb_interface_id) {
-        this.esb_interface_id = esb_interface_id;
+    public void setInterface_id(String esb_interface_id) {
+        this.interface_id = esb_interface_id;
     }
 
-    public String getEsb_interface_step() {
-        return esb_interface_step;
+    public String getInterface_step() {
+        return interface_step;
     }
 
-    public void setEsb_interface_step(String esb_interface_step) {
-        this.esb_interface_step = esb_interface_step;
+    public void setInterface_step(String esb_interface_step) {
+        this.interface_step = esb_interface_step;
     }
 
 
