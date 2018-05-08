@@ -48,6 +48,9 @@ public class RestRouteException extends RouteBuilder {
         logger.info("Hey Katalin! - This an Info from HelloWorld!");
         logger.debug("Hey Katalin! - This a Debug from HelloWorld!");
 
+        stdLog.setDefault_esb_interface_id("KatiInterface");
+        stdLog.setDefault_esb_interface_step("KatiProdessingMessage");
+
         from("jetty://http://0.0.0.0:8082/say")
                 .log(STEP_START)
                 .bean(stdLog, "logStart")
