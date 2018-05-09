@@ -45,16 +45,16 @@ public class CustomerRoutes extends RouteBuilder {
 
 
         //common jetty config -- standard always like this
-        restConfiguration()
+        /*restConfiguration()
                 .component("jetty")
                 .scheme("http")
                 .host("localhost")
                 .port("8083")
                 .contextPath("/services")
-         ;
+         ;*/
 
         //common rest config -- standard always like this -- like restcontroller in MVC
-        rest()
+        /*rest()
             .get("/show") //http get request comes here and gets routed to direct:get-route -- this can be invoked from browser
             .route()
                 .to("direct:get-route")
@@ -64,7 +64,7 @@ public class CustomerRoutes extends RouteBuilder {
             .route()
                 .to("direct:post-route")
             .endRest()
-        ;
+        ;*/
 
 
         stdLog.setDefaultInterface_id("MY_Interface_id");
@@ -72,7 +72,8 @@ public class CustomerRoutes extends RouteBuilder {
 
         // the request from .post("/show") comes here
         //these are like your model and view in MVC
-        from("direct:post-route")
+        /*from("direct:post-route")*/
+        from("jetty://http://0.0.0.0:8083/postcustomer")  // --> camel creates exchange
                 .bean(stdLog, "logStart")
                 .bean(stdLog, "logFileTransformationStart")
                 .unmarshal(customer1DataFormat)
@@ -84,10 +85,11 @@ public class CustomerRoutes extends RouteBuilder {
 
 
         // the request from .get("/show") comes here -- this can be invoked from browser
-        from("direct:get-route")
+        /*from("direct:get-route")*/
+        from("jetty://http://0.0.0.0:8083/welcome")
                 .transform(method("myBean", "welcome"))
                 .setHeader(Exchange.CONTENT_TYPE, simple("text/plain"))
-                .log("log ${body}");
+                .log("${body}");
 
 
 
