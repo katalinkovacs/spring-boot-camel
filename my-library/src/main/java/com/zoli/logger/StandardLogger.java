@@ -35,6 +35,7 @@ public class StandardLogger {
     }
 
 
+
         // create new header with value
     public void logStart(Exchange exchange) throws Exception {
 
@@ -56,6 +57,7 @@ public class StandardLogger {
     public void logFileTransformationFinish(Exchange exchange) throws Exception {
         logStdLog(exchange, STEP_FINISH_FILETRANSFORMATION);
     }
+
     private void logStdLog(Exchange exchange, String stepName) throws Exception {
 
         StandardHeader standardHeader = (StandardHeader) exchange.getIn().getHeader("standardHeaderkey");

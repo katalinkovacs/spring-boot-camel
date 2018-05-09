@@ -79,7 +79,7 @@ public class CustomerRoutes extends RouteBuilder {
                 .bean(transformCustomerProcessor, "transformCustomer")
                 .marshal(customer2DataFormat)
                 .bean(stdLog, "logFileTransformationFinish")
-                /*.log("log ${body}")*/
+                .log("log ${body}")
                 .bean(stdLog, "logFinish");
 
 
