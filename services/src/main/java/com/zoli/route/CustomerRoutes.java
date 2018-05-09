@@ -35,13 +35,13 @@ public class CustomerRoutes extends RouteBuilder {
 
         getContext().setStreamCaching(true);
 
-        onException(Throwable.class)
+        /*onException(Throwable.class)
                 .handled(true)
                 .log("gotException")
                 .setHeader(Exchange.HTTP_RESPONSE_CODE, simple("501"))
                 .setHeader(Exchange.HTTP_RESPONSE_TEXT, simple("Not implemented"))
                 .removeHeader(Exchange.EXCEPTION_CAUGHT)
-        ;
+        ;*/
 
 
         //common jetty config -- standard always like this
@@ -49,18 +49,18 @@ public class CustomerRoutes extends RouteBuilder {
                 .component("jetty")
                 .scheme("http")
                 .host("localhost")
-                .port("8083")
+                .port("8082")
                 .contextPath("/services")
          ;*/
 
         //common rest config -- standard always like this -- like restcontroller in MVC
         /*rest()
-            .get("/show") //http get request comes here and gets routed to direct:get-route -- this can be invoked from browser
+            .get("/welcome") //http get request comes here and gets routed to direct:get-route -- this can be invoked from browser
             .route()
                 .to("direct:get-route")
             .endRest()
 
-            .post("/show") //http post request comes here and gets routed to direct:post-route -- you NEED TO USE POSTMAN FOR THIS!!!!!
+            .post("/postcustomer") //http post request comes here and gets routed to direct:post-route -- you NEED TO USE POSTMAN FOR THIS!!!!!
             .route()
                 .to("direct:post-route")
             .endRest()
@@ -80,6 +80,7 @@ public class CustomerRoutes extends RouteBuilder {
                 .bean(transformCustomerProcessor, "transformCustomer")
                 .marshal(customer2DataFormat)
                 .bean(stdLog, "logFileTransformationFinish")
+                .throwException(new RuntimeException("----------------------Hello Kati--------------------------"))
                 .log("${body}")
                 .bean(stdLog, "logFinish");
 
