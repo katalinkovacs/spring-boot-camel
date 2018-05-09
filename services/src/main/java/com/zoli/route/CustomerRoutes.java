@@ -4,16 +4,24 @@ package com.zoli.route;
 import com.zoli.beans.Customer1;
 import com.zoli.beans.Customer2;
 import com.zoli.beans.TransformCustomerProcessor;
+import com.zoli.logger.StandardLogger;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.spi.DataFormat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
 @Component // adds route to camelcontext
 public class CustomerRoutes extends RouteBuilder {
+
+
+    final static Logger logger = LoggerFactory.getLogger(RestRouteException.class);
+    public StandardLogger stdLog = new StandardLogger();
+
 
     @Autowired
     TransformCustomerProcessor transformCustomerProcessor;
@@ -59,13 +67,20 @@ public class CustomerRoutes extends RouteBuilder {
         ;
 
 
+        stdLog.setDefaultInterface_id("MY_Interface_id");
+        stdLog.setDefaultInterface_step("MY_Interface_step");
+
         // the request from .post("/show") comes here
         //these are like your model and view in MVC
         from("direct:post-route")
+                .bean(stdLog, "logStart")
+                .bean(stdLog, "logFileTransformationStart")
                 .unmarshal(customer1DataFormat)
                 .bean(transformCustomerProcessor, "transformCustomer")
                 .marshal(customer2DataFormat)
-                .log("log ${body}");
+                .bean(stdLog, "logFileTransformationFinish")
+                /*.log("log ${body}")*/
+                .bean(stdLog, "logFinish");
 
 
         // the request from .get("/show") comes here -- this can be invoked from browser

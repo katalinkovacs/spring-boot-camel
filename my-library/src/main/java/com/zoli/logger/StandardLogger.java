@@ -45,10 +45,17 @@ public class StandardLogger {
         logStdLog(exchange, STEP_START);
     }
 
-    public void logFinished(Exchange exchange) throws Exception {
+    public void logFinish(Exchange exchange) throws Exception {
         logStdLog(exchange, STEP_FINISH);
     }
 
+    public void logFileTransformationStart(Exchange exchange) throws Exception {
+        logStdLog(exchange, STEP_START_FILETRANSFORMATION);
+    }
+
+    public void logFileTransformationFinish(Exchange exchange) throws Exception {
+        logStdLog(exchange, STEP_FINISH_FILETRANSFORMATION);
+    }
     private void logStdLog(Exchange exchange, String stepName) throws Exception {
 
         StandardHeader standardHeader = (StandardHeader) exchange.getIn().getHeader("standardHeaderkey");

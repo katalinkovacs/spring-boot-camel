@@ -60,7 +60,7 @@ public class RestRouteException extends RouteBuilder {
                 .log(LoggingLevel.ERROR,"This is ERROR log .......")*/
                 /*.log(STEP_FINISH)*/
                     //bean ref + method
-                .bean(stdLog, "logFinished");
+                .bean(stdLog, "logFinish");
                 /*.log("log");*/
 
 

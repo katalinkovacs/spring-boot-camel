@@ -18,4 +18,10 @@ public class MyBeanie {
         /*return say + myBean.giveMeSomeCrap();*/
         return say + myBean.giveMeSomething();
     }
+
+    public String welcome(){
+
+        MyBean myBean = new MyBean();
+        return "Welcome!";
+    }
 }
