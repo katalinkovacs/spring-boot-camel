@@ -17,7 +17,8 @@ public class TransformCustomerProcessor {
         customer2.setLastName(customer1.getFamilyName());
         customer2.setFirstName(customer1.getGivenName());
 
-        exchange.getOut().setBody(customer2);
+        exchange.getIn().setBody(customer2);
+
 
     }
 
