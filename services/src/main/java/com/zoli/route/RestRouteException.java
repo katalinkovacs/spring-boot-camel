@@ -24,8 +24,6 @@ public class RestRouteException extends RouteBuilder {
 
         logger.info("-----------------Entering application----------------.");
 
-
-
         getContext().setStreamCaching(true);
 
         /*onException(Throwable.class)
@@ -44,25 +42,26 @@ public class RestRouteException extends RouteBuilder {
                 })
         ;*/
 
-        stdLog.setDefaultInterface_id("Katalin_Interface_id");
-        stdLog.setDefaultInterface_step("Katalin_Interface_step_ProcessingMessage");
+        stdLog.setDefaultInterface_id("MY_Interface_id");
+        stdLog.setDefaultInterface_step("MY_Interface_step");
 
 
-        logger.info("-------------- This an INFO from RestRouteException-----------------");
-        logger.debug("-------------- This an DEBUG from RestRouteException-----------------");
+        /*logger.info("-------------- This an INFO from RestRouteException-----------------");
+        logger.debug("-------------- This an DEBUG from RestRouteException-----------------");*/
 
-        from("jetty://http://0.0.0.0:8082/say")
-                .log(STEP_START)
-                .bean(stdLog, "logStart")
+        from("jetty://http://0.0.0.0:8082/say")  // --> camel creates exchange
+                /*.log(STEP_START)*/
+                .bean(stdLog, "logStart") //bean invocation that logs
                 .transform(method("myBean", "saySomething"))
                 /*.log("This is just a simple log .......with a body ${body}")*/
-                .log(SIMPLE_BODY)
-                .log(LoggingLevel.DEBUG, "This is DEBUG log .......")
+                /*.log(SIMPLE_BODY)*/
+                /*.log(LoggingLevel.DEBUG, "This is DEBUG log .......")
                 .log(LoggingLevel.INFO,"This is INFO log .......")
-                .log(LoggingLevel.ERROR,"This is ERROR log .......")
-                .log(STEP_FINISH)
-                .bean(stdLog, "logFinished")
-                .log("log");
+                .log(LoggingLevel.ERROR,"This is ERROR log .......")*/
+                /*.log(STEP_FINISH)*/
+                    //bean ref + method
+                .bean(stdLog, "logFinished");
+                /*.log("log");*/
 
 
 

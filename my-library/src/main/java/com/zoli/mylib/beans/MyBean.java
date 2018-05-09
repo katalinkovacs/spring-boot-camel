@@ -5,10 +5,6 @@ import org.springframework.stereotype.Component;
 
 public class MyBean {
 
-    public String giveMeSomeCrap(){
-
-        return " this is crap from library";
-    }
 
     public String giveMeSomething(){
 

@@ -35,39 +35,26 @@ public class StandardLogger {
     }
 
 
-
-
-
+        // create new header with value
     public void logStart(Exchange exchange) throws Exception {
 
         StandardHeader standardHeader = new StandardHeader();
-
-        standardHeader.setInterface_id(defaultInterface_id);
-        standardHeader.setInterface_step(defaultInterface_step);
-
-        exchange.getIn().setHeader("standardHeader", standardHeader);
-        log(exchange, STEP_START);
+        standardHeader.setEsb_interface_id(defaultInterface_id);
+        standardHeader.setEsb_interface_step(defaultInterface_step);
+        exchange.getIn().setHeader("standardHeaderkey", standardHeader);
+        logStdLog(exchange, STEP_START);
     }
-
-
-
 
     public void logFinished(Exchange exchange) throws Exception {
-        log(exchange, STEP_FINISH);
+        logStdLog(exchange, STEP_FINISH);
     }
 
+    private void logStdLog(Exchange exchange, String stepName) throws Exception {
 
-
-
-
-
-    private void log(Exchange exchange, String stepName) throws Exception {
-
-        StandardHeader standardHeader = (StandardHeader) exchange.getIn().getHeader("standardHeader");
+        StandardHeader standardHeader = (StandardHeader) exchange.getIn().getHeader("standardHeaderkey");
         String standardheaderJson = standardHeader.toString();
 
         LOG.info("StepName is: " +stepName + " The body of the message: " +  exchange.getIn().getBody().toString() + " The standard header is: " + standardheaderJson);
-        LOG.info("----------another info----------");
 
     }
 
