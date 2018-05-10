@@ -25,14 +25,17 @@
 
                 org.springframework.context,
                 org.springframework.boot,
-                org.apache.camel.impl,
+                org.apache.camel,
+
+                <!--org.apache.camel.impl,
                 org.apache.camel.builder,
+                org.apache.camel.processor,
+                org.apache.camel.management,-->
                 org.eclipse.jetty.server,
                 javax.servlet.http,
-                org.apache.camel.processor,
-                org.apache.camel.management
                 java.lang.reflect.Method,
                 sun.reflect,
+                com.zoli,
 
                 <!--org.apache.catalina,
                 org.springframework.aop,
