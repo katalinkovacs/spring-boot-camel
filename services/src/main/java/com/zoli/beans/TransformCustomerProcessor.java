@@ -19,6 +19,12 @@ public class TransformCustomerProcessor {
 
         exchange.getIn().setBody(customer2);
 
+        /*try {
+            throw new NullPointerException();
+        }
+        catch (NullPointerException e) {
+            System.out.println(e + "Catch ----------- NullPointerException------------");
+        }*/
 
     }
 
