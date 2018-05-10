@@ -1,5 +1,6 @@
-package com.zoli;
+package com.zoli.routestests;
 
+import com.zoli.Application;
 import org.apache.camel.CamelContext;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.camel.test.spring.CamelSpringBootRunner;

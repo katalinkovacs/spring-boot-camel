@@ -74,6 +74,7 @@ public class CustomerRoutes extends RouteBuilder {
         //these are like your model and view in MVC
         /*from("direct:post-route")*/
         from("jetty://http://0.0.0.0:8082/postcustomer")  // --> camel creates exchange
+                .id("route-postcustomer")
                 .bean(stdLog, "logStart")
                 .bean(stdLog, "logFileTransformationStart")
                 .unmarshal(customer1DataFormat)
@@ -88,6 +89,7 @@ public class CustomerRoutes extends RouteBuilder {
         // the request from .get("/show") comes here -- this can be invoked from browser
         /*from("direct:get-route")*/
         from("jetty://http://0.0.0.0:8082/welcome")
+                .id("route-welcome")
                 .transform(method("myBean", "welcome"))
                 .setHeader(Exchange.CONTENT_TYPE, simple("text/plain"))
                 .log("${body}");

@@ -35,7 +35,6 @@
                 javax.servlet.http,
                 java.lang.reflect.Method,
                 sun.reflect,
-                com.zoli,
 
                 <!--org.apache.catalina,
                 org.springframework.aop,
