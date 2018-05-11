@@ -63,6 +63,14 @@
         <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
     </appender>
 
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+    %msg%n
+
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
         <pattern>%m%n%rEx{short}</pattern>

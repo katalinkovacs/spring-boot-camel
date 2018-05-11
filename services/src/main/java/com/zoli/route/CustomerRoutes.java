@@ -81,7 +81,7 @@ public class CustomerRoutes extends RouteBuilder {
                 .bean(transformCustomerProcessor, "transformCustomer")
                 .marshal(customer2DataFormat)
                 .bean(stdLog, "logFileTransformationFinish")
-                .throwException(new RuntimeException("----------------------Hello Kati--------------------------"))
+                .throwException(new RuntimeException("---throwException---"))
                 .log("${body}")
                 .bean(stdLog, "logFinish");
 
