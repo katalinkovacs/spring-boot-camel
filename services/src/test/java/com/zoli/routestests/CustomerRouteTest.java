@@ -2,6 +2,7 @@ package com.zoli.routestests;
 
 
 import com.zoli.Application;
+import com.zoli.CustomerApplication;
 import com.zoli.route.CustomerRoutes;
 
 import org.apache.camel.CamelContext;
@@ -32,7 +33,7 @@ import java.nio.charset.StandardCharsets;
 
 @ActiveProfiles("unittest")
 @RunWith(CamelSpringBootRunner.class)
-@SpringBootTest(classes =  Application.class)
+@SpringBootTest(classes = CustomerApplication.class)
 @DisableJmx(true)
 public class CustomerRouteTest extends CamelTestSupport {
 
@@ -66,7 +67,7 @@ public class CustomerRouteTest extends CamelTestSupport {
     @Test
     public void route_whenValidInput_thenValidOutput() throws Exception{
 
-        LOG.info("INF-0171: test-1 Starting test for Success result");
+        LOG.info("Starting test.................");
 
         initiateTestData();
 
@@ -75,11 +76,13 @@ public class CustomerRouteTest extends CamelTestSupport {
         route.adviceWith(context, new AdviceWithRouteBuilder() {
             @Override
             public void configure() throws Exception {
-                replaceFromWith("direct:main-start");
+                replaceFromWith("direct:in");
+                interceptSendToEndpoint("file:TransformationXmlToXml/src/main/resources/data/outbox")
+                        .skipSendToOriginalEndpoint().to("mock:out");
             }
         });
 
-       /* final RouteDefinition route0052 = context.getRouteDefinition(ROUTE_ID_SENDTO_TA_NAV_0052);
+      /*  final RouteDefinition route0052 = context.getRouteDefinition(ROUTE_ID_SENDTO_TA_NAV_0052);
         route0052.adviceWith(context, new AdviceWithRouteBuilder() {
             @Override
             public void configure() throws Exception {
