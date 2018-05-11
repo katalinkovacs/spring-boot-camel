@@ -69,7 +69,7 @@
             <pattern>%msg%n</pattern>
         </encoder>
     </appender>
-    %msg%n
+   
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
